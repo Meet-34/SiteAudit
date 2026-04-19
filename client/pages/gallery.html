@@ -23,7 +23,7 @@
     body {
       font-family: "Poppins", sans-serif;
       color: white;
-      background-color: black;
+      /* background-color: black; */
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -636,10 +636,21 @@
       pointer-events: none;
       opacity: 0.4;
     }
+
+      .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+  }
   </style>
 
   <body>
     <img class="bg" src="../images/site2.avif" alt="" />
+    <div class="overlay"></div>
 
     <!-- Auth popup -->
     <div class="auth-overlay" id="authOverlay">
