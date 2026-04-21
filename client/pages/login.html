@@ -523,7 +523,7 @@
             email: data.email,
             provider: "email",
           }));
-          window.location.href = "/";  // ✅ fixed
+          window.location.href = "/";  
         } else {
           showError("signupEmailError", data.message || "Signup failed. Try again.");
         }
@@ -536,6 +536,7 @@
 
     // ─── UI Helpers ───────────────────────────────────────────────────
 
+    /*Shows signup form, hides login form*/
     function showSignup() {
       document.getElementById("loginSection").style.display = "none";
       document.getElementById("signupSection").style.display = "block";
@@ -543,6 +544,7 @@
       document.getElementById("cardSub").textContent = "Join SiteAudit today";
     }
 
+    /*Shows login form, hides signup form*/
     function showLogin() {
       document.getElementById("signupSection").style.display = "none";
       document.getElementById("loginSection").style.display = "block";
@@ -550,15 +552,18 @@
       document.getElementById("cardSub").textContent = "Sign in to your account to continue";
     }
 
+    /*Validates the email*/
     function isValidEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
+    /*Shows the error msg*/
     function showError(id, msg) {
       const el = document.getElementById(id);
       if (el) { el.textContent = msg; el.style.display = "block"; }
     }
 
+    /*Clears multiple errors at once*/
     function clearErrors(ids) {
       ids.forEach((id) => {
         const el = document.getElementById(id);
@@ -566,11 +571,13 @@
       });
     }
 
+    /*If true, shows spinner else removes spinner*/
     function setLoading(btnId, state) {
       const btn = document.getElementById(btnId);
       if (btn) btn.classList.toggle("loading", state);
     }
 
+    /*Smartly places the error msgs according to the UI*/
     function showGlobalError(msg) {
       const active = document.getElementById("loginSection").style.display !== "none"
         ? "loginPasswordError" : "signupEmailError";
